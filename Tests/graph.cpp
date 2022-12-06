@@ -26,21 +26,17 @@ void Graph::dfs(int v) {
     }
 }
 
-bool Graph::dfsBi(int v, bool &color) {
+bool Graph::dfsBi(int v, bool color) {
     if(nodes[v].visited)
         return (color == nodes[v].color);
 
     nodes[v].color = color;
     nodes[v].visited = true;
-    for (auto e : nodes[v].adj) {
-        int w = e.dest;
-        if (!nodes[w].visited)
-            if(!dfsBi(w, nodes[w].color))
-                return false;
-            else return true;
-        else
-            if(nodes[w].color==!color)
-    }
+    for (auto e : nodes[v].adj)
+        if(!dfsBi(e.dest, !color))
+            return false;
+
+    return true;
 }
 
 
@@ -49,10 +45,7 @@ bool Graph::dfsBi(int v, bool &color) {
 // ----------------------------------------------------------
 // TODO
 bool Graph::bipartite() {
-    for(int i=1; i<n; i++){
-        if(!nodes[i].visited)
-
-    }
+    return dfsBi(1, true);
 }
 
 // ----------------------------------------------------------

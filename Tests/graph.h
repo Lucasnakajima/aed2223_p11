@@ -35,7 +35,7 @@ public:
 
     // Depth-First Search: example implementation
     void dfs(int v);
-    bool dfsBi(int v, bool& color);
+    bool dfsBi(int v, bool color);
     // ----- Functions to implement in this class -----
     bool bipartite();
     int countSCCs();
